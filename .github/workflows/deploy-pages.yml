@@ -29,15 +29,25 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configure Pages
+        id: configure_pages
         if: ${{ env.HAS_PAGES_TOKEN != 'true' }}
+        continue-on-error: true
         uses: actions/configure-pages@v5
 
       - name: Configure Pages and enable site
+        id: configure_pages_enablement
         if: ${{ env.HAS_PAGES_TOKEN == 'true' }}
         uses: actions/configure-pages@v5
         with:
           token: ${{ secrets.PAGES_TOKEN }}
           enablement: true
+
+      - name: Explain missing Pages enablement
+        if: ${{ env.HAS_PAGES_TOKEN != 'true' && steps.configure_pages.outcome == 'failure' }}
+        run: |
+          Write-Error "GitHub Pages is not enabled for this repository yet. Either enable Pages once with: gh api --method POST repos/LironeFitoussi/fb-chat-exporter/pages -F build_type=workflow ; or add a repository secret named PAGES_TOKEN with a PAT that can enable Pages automatically."
+          exit 1
+        shell: pwsh
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
