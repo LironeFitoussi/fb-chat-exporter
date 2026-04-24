@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messenger Chat Exporter</title>
+  <meta
+    name="description"
+    content="Messenger Chat Exporter is a Chrome extension that exports Facebook Messenger conversations to JSON directly in your browser."
+  >
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Chrome Extension</p>
+      <h1>Export Messenger chats to JSON, locally in your browser.</h1>
+      <p class="lede">
+        Messenger Chat Exporter helps you save the currently open Facebook Messenger conversation
+        as a JSON file and keep a local export history for quick re-downloads.
+      </p>
+      <div class="actions">
+        <a class="button button-primary" href="./privacy.html">Privacy Policy</a>
+        <a class="button button-secondary" href="https://github.com/LironeFitoussi/fb-chat-exporter">View Source</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>What it does</h2>
+      <ul class="feature-list">
+        <li>Exports the active Messenger conversation as formatted JSON.</li>
+        <li>Stores successful exports in browser storage for later re-downloads.</li>
+        <li>Runs locally in the browser with no external backend.</li>
+      </ul>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>How it works</h2>
+        <p>
+          Open a conversation in Messenger, launch the extension, and export. The extension reads
+          the messages visible in the current chat and packages them into a downloadable JSON file.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Permissions</h2>
+        <p>
+          The extension requests <code>tabs</code>, <code>downloads</code>, and
+          <code>storage</code> so it can access the active Messenger tab, save the export file, and
+          remember prior exports in your browser.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Privacy first</h2>
+        <p>
+          Exported chat content is processed locally in your browser session. The project does not
+          run a server and does not transmit your conversations to a remote database.
+        </p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

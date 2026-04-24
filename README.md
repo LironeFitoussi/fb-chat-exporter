@@ -26,6 +26,42 @@ npm run build
 
 The production zip is generated in `release/`.
 
+## GitHub Pages
+
+The repository includes a lightweight static site in `docs/` for GitHub Pages, including a home page
+and a privacy policy page suitable for extension listing requirements.
+
+Deployment is handled by [deploy-pages.yml](/c:/Developer/fb-chat-exporter/.github/workflows/deploy-pages.yml).
+
+Suggested one-time GitHub CLI setup:
+
+```bash
+gh auth login
+git add docs .github/workflows/deploy-pages.yml README.md
+git commit -m "Add GitHub Pages site and workflow"
+git push origin main
+gh api --method POST repos/LironeFitoussi/fb-chat-exporter/pages -F build_type=workflow
+```
+
+If Pages already exists for the repository, use:
+
+```bash
+gh api --method PUT repos/LironeFitoussi/fb-chat-exporter/pages -F build_type=workflow
+```
+
+After that, every push to `main` that changes `docs/` or the workflow will publish the site automatically.
+
+If you also want to set the repository homepage URL:
+
+```bash
+gh repo edit --homepage "https://lironefitoussi.github.io/fb-chat-exporter/"
+```
+
+Expected URLs:
+
+- Site home: `https://lironefitoussi.github.io/fb-chat-exporter/`
+- Privacy policy: `https://lironefitoussi.github.io/fb-chat-exporter/privacy.html`
+
 ## Icon Pipeline
 
 The raw brand source lives at `logo.png`.
