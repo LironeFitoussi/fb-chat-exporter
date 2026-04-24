@@ -51,6 +51,10 @@ gh api --method PUT repos/LironeFitoussi/fb-chat-exporter/pages -F build_type=wo
 
 After that, every push to `main` that changes `docs/` or the workflow will publish the site automatically.
 
+If you want the workflow to enable Pages automatically on first deploy, add a repository secret named
+`PAGES_TOKEN` with a Personal Access Token that has repository administration or Pages write access.
+The workflow is configured to use that secret with `actions/configure-pages@v5` and `enablement: true`.
+
 If you also want to set the repository homepage URL:
 
 ```bash
